@@ -11,9 +11,16 @@ class UsersController < ApplicationController
   def create
     @user = User.new(params[:user])
     if @user.save
-      s
     else
       render 'new'
     end
   end
+
+  private
+    
+    def user_params
+      params.require(:user).permit(:name, :email, 
+                :password, :password_confimation)
+    end
+  
 end
